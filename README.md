@@ -16,12 +16,33 @@ The key features include:
 * **Test Results Panel:** Displays passed/failed status, detailed assertions, logs, and timing info.
 * **Download Report:** Save the test results as an HTML report with one click.
 
-## Installation
+## ⚙️ Installation
 
-1. Clone or download this repository.
-2. Deploy the app to your preferred environment (Salesforce, local web server, etc.).
-3. Ensure the backend API supports fetching test classes and running tests.
-4. Open the app in your browser.
+### Clone the Repository
+```bash
+git clone https://github.com/AshokThangavel/Testify.git
+cd Testify
+````
+
+### Running the Application with Docker
+
+Build and start the app using Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+### Stopping the Application
+
+To stop and remove the running containers:
+
+```bash
+docker-compose down
+```
+
+## Technical details
+
+1. Extend your test case class **`Testify.UnitTest.TestCases`** so that, by default, the results are displayed on the screen.
 
 ## Usage
 
