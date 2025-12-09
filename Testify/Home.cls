@@ -5,7 +5,10 @@ Parameter Title As STRING [ Final ] = "Testify";
 
 Parameter APPLICATION As STRING = "Testify";
 
-Parameter TestifyTestCaseBase As STRING = "Testify.UnitTest.TestCases";
+Parameter TestCaseBase As STRING = "Testify.UnitTest.TestCases";
+
+
+Parameter UnitTestMgr As STRING = "Testify.UnitTest.Manager";
 
 ClassMethod OnRenderScreen()
 {
@@ -60,15 +63,13 @@ ClassMethod executeList(package)
 {
 	Set package = package_".cls"
 	Set packages(package)=""
-	Do ##class(Testify.UnitTest.Manager).RunScripts(.packages)
+	Do $ClassMethod(..#UnitTestMgr,"RunScripts",.packages)
 }
 
 ClassMethod GetUnitTestData(package)
 {
-	Set id = $Get(^||zaxk.us($Job))
-	If id="" {
-		Set id = ^|$Namespace|UnitTest.Result
-	}
+	Set id = $Get(^||testify.lastid($Job))
+	Set:id="" id = ^|$Namespace|UnitTest.Result
 	Set json = ..UnitTestResultById(id)
 	Set:'$IsObject(json) json =[]
 	Return json.%ToJSON()
@@ -113,8 +114,8 @@ ClassMethod UnitTestResultById(Id As %Integer) As %DynamicArray
 
 ClassMethod GetTestcaseClasses(Output pClsList)
 {
-	Do $System.OBJ.GetPackageList(.pClsList,..#TestifyTestCaseBase)
-	Set tResult = ##class(%SQL.Statement).%ExecDirect(,"SELECT Name FROM %Dictionary.ClassDefinitionQuery_SubclassOf(?)",..#TestifyTestCaseBase)
+	Do $System.OBJ.GetPackageList(.pClsList,..#TestCaseBase)
+	Set tResult = ##class(%SQL.Statement).%ExecDirect(,"SELECT Name FROM %Dictionary.ClassDefinitionQuery_SubclassOf(?)",..#TestCaseBase)
 	While tResult.%Next()
 	{
 		Set pClsList(tResult.Name)=""

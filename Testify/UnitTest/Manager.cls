@@ -25,7 +25,7 @@ ClassMethod RunScripts(ByRef exportFiles)
 /// Called at the end of SaveResult() to perform any result aggregation tasks required by subtasks.
 Method OnAfterSaveResult(ByRef userparam)
 {
-	Set ^||zaxk.us($Job) = ..ResultId
+	Set ^||testify.lastid($Job) = ..ResultId
 	Quit 1
 }
 }
