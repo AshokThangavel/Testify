@@ -5,6 +5,7 @@ Parameter Title As STRING [ Final ] = "Testify";
 
 Parameter APPLICATION As STRING = "Testify";
 
+Parameter DOMAIN As STRING = "Testify";
 
 ClassMethod OnRenderScreen() As %Status
 {
@@ -127,11 +128,53 @@ XData Style
 ClassMethod GetTestSuites() As %String
 {
 	Set data=[]
-	Set tResult  = ##class(%SQL.Statement).%ExecDirect(,"SELECT JSON_OBJECT('id':ID, 'status':'passed', 'dateTime':DateTime, 'duration':CONCAT(Duration,' ms') ) as testInstance FROM %UnitTest_Result.TestInstance ORDER BY ID DESC")
+	Set tResult  = ##class(%SQL.Statement).%ExecDirect(,"SELECT JSON_OBJECT('id':ID, 'dateTime':DateTime, 'duration':CONCAT(Duration,' ms') ) as testInstance FROM %UnitTest_Result.TestInstance ORDER BY ID DESC")
 	While tResult.%Next(){
-		Do data.%Push({}.%FromJSON(tResult.testInstance))
+		Set testdata = {}.%FromJSON(tResult.testInstance)
+		Set testdata.status = ..calcStatus(testdata.id)
+		Do data.%Push(testdata)
 	}
 	Return data.%ToJSON()
+}
+
+ClassMethod calcStatus(pTestId) As %Status
+{
+	Set notPassed=0
+	Set ind=##class(%UnitTest.Result.TestInstance).%OpenId(pTestId)
+	If $IsObject(ind) {
+		For i=1:1:ind.TestSuites.Count() {
+			Set suitestatus=##class(%UnitTest.Portal.standardPage).GetTestStatus(pTestId,ind.TestSuites.GetAt(i).Name)
+			Set suite(suitestatus)=$Get(suite(suitestatus))+1
+			If suitestatus'=1 {
+				Set notPassed=1
+			}
+		}
+	}
+	If notPassed=0 {
+		Set status = "All Suites Passed"
+	}
+	Else {
+		Set sub=""
+		For  {
+			Set sub=$Order(suite(sub))
+			Quit:sub=""
+			Set str=$$$Text("Test Suite")
+			If suite(sub)>1 {
+				Set str=$$$Text("Test Suites")
+			}
+			If sub=0 {
+				Set status=$$$Text("failed")
+			}
+			If sub=2 {
+				Set status=$$$Text("skipped")
+			}
+			If sub=1 {
+				Set status=$$$Text("passed")
+			}
+
+		}
+	}
+	Quit status
 }
 
 ClassMethod UnitTestResultById(Id As %Integer) As %DynamicArray
@@ -304,6 +347,7 @@ ClassMethod Scripts()
         // Function to delete suite
         function deleteSuite(testId) {
             if (confirm('Delete this test suite?')) {
+	            alert(testId);
                 let sc = #server(..DeleteUnitTestResult(testId))#;
                 window.location.reload();
             }
@@ -337,4 +381,5 @@ ClassMethod Scripts()
     </script>
 	>
 }
+
 }
