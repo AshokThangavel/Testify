@@ -46,10 +46,12 @@ docker-compose down
 
 ## Usage
 
-1. Select a test class from the dropdown on the left panel.
-2. Click the **Run Test** button.
-3. The right panel will populate with the test execution results.
-4. If desired, click the **Download** link to save the test report as an HTML file.
+1. Goto http://localhost:52773/csp/user/Testify.Home.cls
+2. Select a test class from the dropdown on the left panel.
+3. Click the **Run Test** button.
+4. The right panel will populate with the test execution results.
+5. If desired, click the **Download** link to save the test report as an HTML file.
+6. View all the test results by click **View All test results**
 
 ## Example Screenshot
 

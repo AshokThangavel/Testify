@@ -7,7 +7,6 @@ Parameter APPLICATION As STRING = "Testify";
 
 Parameter TestCaseBase As STRING = "Testify.UnitTest.TestCases";
 
-
 Parameter UnitTestMgr As STRING = "Testify.UnitTest.Manager";
 
 ClassMethod OnRenderScreen()
@@ -16,6 +15,7 @@ ClassMethod OnRenderScreen()
     <div class="container">
         <div class="left-panel">
             <h1>Test Execution</h1>
+            <a href ="Testify.UI.TestResults.cls" target="_blank">View All test results</a>
             <h4>Select Unit Test files to execute</h4>
 
             <div class="form-group">
