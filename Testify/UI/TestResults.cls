@@ -304,7 +304,6 @@ ClassMethod Scripts()
         // Function to delete suite
         function deleteSuite(testId) {
             if (confirm('Delete this test suite?')) {
-	            alert(testId);
                 let sc = #server(..DeleteUnitTestResult(testId))#;
                 window.location.reload();
             }
