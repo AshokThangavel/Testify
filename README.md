@@ -17,6 +17,8 @@ The key features include:
 * **Run Tests:** Execute tests and get immediate feedback.
 * **Test Results Panel:** Displays passed/failed status, detailed assertions, logs, and timing info.
 * **Download Report:** Save the test results as an HTML report with one click.
+* **View All testresults:** Option to view all test results and download.
+* **Analytics Dashboard:** Unit test analytics dashboard.
 
 ## ⚙️ Installation
 
