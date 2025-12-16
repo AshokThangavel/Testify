@@ -58,7 +58,8 @@ docker-compose down
 ## Example Screenshot
 
 ### Test Results & Report Download
-<img width="1216" height="720" alt="image" src="https://github.com/user-attachments/assets/4227ff67-e5d1-4667-bef9-9d569079bf88" />
+<img width="1538" height="861" alt="image" src="https://github.com/user-attachments/assets/859deb6a-cb80-4f3a-916e-e781ae567508" />
+
 
 ---
 
