@@ -1,5 +1,6 @@
 Class Testify.UnitTest.Manager Extends (%UnitTest.Manager, Testify.UnitTest.Base)
 {
+
 /// Send unit test class at runtime as an array
 /// <EXAMPLE>
 /// Set exportFiles("UnitTest.Cases.ClinDocCase.cls")=""
@@ -28,4 +29,5 @@ Method OnAfterSaveResult(ByRef userparam)
 	Set ^||testify.lastid($Job) = ..ResultId
 	Quit 1
 }
+
 }

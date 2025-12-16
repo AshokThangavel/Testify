@@ -1,5 +1,6 @@
 Class Testify.Report.Html Extends %RegisteredObject
 {
+
 Property FileName As %String(MAXLEN = 150);
 
 Property AbsoluteFileName As %String(MAXLEN = 5000);
@@ -10,7 +11,9 @@ Property HTMLStream As %Stream.TmpCharacter;
 
 Parameter UTResultGbl As STRING = "^UnitTest.Result";
 
-ClassMethod DownloadReport(pUnitTestId As %Integer = "", Output FileName) As %Stream.TmpCharacter
+ClassMethod DownloadReport(
+	pUnitTestId As %Integer = "",
+	Output FileName) As %Stream.TmpCharacter
 {
     If 'pUnitTestId{
         Return $$$ERROR($$$GeneralError,"unit test id is invalid")
@@ -166,7 +169,6 @@ End ;
 	Return $$$OK
 }
 
-
 ClassMethod Status(status As %Integer) [ CodeMode = expression ]
 {
 $Case(status,0:"failed",1:"passed",:"skipped")
@@ -221,4 +223,5 @@ Method %OnNew(pUnitTestId As %Integer = "") As %Status
     Set ..FileName = "ut-"_..UnitTestId_$Translate($ZDatetime($Horolog,3)," -:")_".html"
     Quit $$$OK
 }
+
 }

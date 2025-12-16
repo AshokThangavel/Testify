@@ -1,7 +1,6 @@
 Class Testify.Report.Download Extends %CSP.Page
 {
 
-
 ClassMethod OnPage() As %Status
 {
 	If $IsObject($Get(%stream)) {

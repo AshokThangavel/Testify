@@ -1,5 +1,6 @@
 Class Testify.Format.Serializer Extends %RegisteredObject
 {
+
 Property FormatterData As %Stream.TmpCharacter;
 
 Property IsVerbose As %Boolean [ InitialExpression = 0 ];
@@ -12,7 +13,10 @@ Property ResultSet As %SQL.StatementResult;
 
 Parameter UTGbl As STRING = "^UnitTest.Result";
 
-ClassMethod GenerateJSON(pUnitTestId As %Integer = 0, pResultType As %String = "", pIsVerbose As %Integer = 0) As %DynamicObject
+ClassMethod GenerateJSON(
+	pUnitTestId As %Integer = 0,
+	pResultType As %String = "",
+	pIsVerbose As %Integer = 0) As %DynamicObject
 {
 	If 'pUnitTestId||('$Data(@..#UTGbl(pUnitTestId))) {
 		Return $$$ERROR($$$GeneralError,"Unit test id is invalid")
@@ -80,7 +84,9 @@ Method JSON() As %DynamicObject
 	Return unitTest
 }
 
-Query UTResults(pInstance As %Integer, pStatus) As %SQLQuery(ROWSPEC = "TotalCounts:%Integer,namespace:%String,duration:%String,testDateTime:%String,suiteName:%String,testcaseName:%String,methodName:%String,testMethod:%String,assertAction:%String,assertCounter:%Integer,assertDescription:%String,assertLocation:%String", SELECTMODE = "DISPLAY")
+Query UTResults(
+	pInstance As %Integer,
+	pStatus) As %SQLQuery(ROWSPEC = "TotalCounts:%Integer,namespace:%String,duration:%String,testDateTime:%String,suiteName:%String,testcaseName:%String,methodName:%String,testMethod:%String,assertAction:%String,assertCounter:%Integer,assertDescription:%String,assertLocation:%String", SELECTMODE = "DISPLAY")
 {
 SELECT
 count(*) as TotalCounts,
@@ -128,11 +134,15 @@ JOIN %UnitTest_Result.TestAssert tassert ON tassert.TestMethod=tmethod.ID
 WHERE tinstance.ID=:pInstance
 }
 
-Method %OnNew(pUnitTestId As %Integer = 0, pIsVerbose As %Integer = 0, pResultType As %String) As %Status
+Method %OnNew(
+	pUnitTestId As %Integer = 0,
+	pIsVerbose As %Integer = 0,
+	pResultType As %String) As %Status
 {
 	Set ..UnitTestId = pUnitTestId
 	Set ..IsVerbose = pIsVerbose
 	Set ..ResultType= pResultType
 	Return $$$OK
 }
+
 }

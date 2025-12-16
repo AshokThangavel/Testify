@@ -16,7 +16,6 @@ ClassMethod UnitTestRootGet() [ CodeMode = expression ]
 $Get(^UnitTestRoot)
 }
 
-
 /// Create a directory to load the Unit test files
 ClassMethod CheckUTExist()
 {

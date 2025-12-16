@@ -2,5 +2,11 @@
     do ##class(Security.Users).UnExpireUserPasswords("*")
     zpm "install passwordless"
     zn "USER"
+    do EnableDeepSee^%SYS.cspServer("/csp/user/")
+
+    zpm "install isc-dev"
+    do ##class(dev.code).workdir("/home/irisowner/dev/Testify")
+    do ##class(dev.code).import("*.DFI")
+
     zpm "load /home/irisowner/dev/ -v":1
     halt
