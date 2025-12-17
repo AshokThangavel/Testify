@@ -6,14 +6,12 @@
       <Version>1.0.1</Version>
       <Description>Testify - Unit Test Viewer and Report Downloader</Description>
       <Keywords>Testing, UnitTest, json, yaml</Keywords>
-      <Author>
-        <Person>Ashok kumar</Person>
-        <License>MIT</License>
-      </Author>
-      <Description>Testify</Description>
-      <Keywords>Terminal, COS</Keywords>
       <Packaging>module</Packaging>
       <Resource Name="Testify.PKG"/>
+        <!-- <Resource Name="*.DFI" /> -->
+      <!--Resource Directory="dfi" FilenameExtension="dfi" Name="Testify-UnitTest.pivot.DFI" />
+      <Resource Directory="dfi" FilenameExtension="dfi" Name="Testify-UnitTestResultsDashboard.dashboard.DFI" />
+      <Resource Directory="dfi" FilenameExtension="dfi" Name="Testify-UnitTestResultspvt.pivot.DFI" /-->
       <LifecycleClass>%IPM.Lifecycle.Module</LifecycleClass>
     </Module>
   </Document>
