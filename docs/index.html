@@ -10,144 +10,88 @@
 </head>
 
 <body>
+    <nav>
+        <div class="logo"><i class="fas fa-microscope"></i> Testify</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#install">Installation</a>
+            <a href="https://github.com/AshokThangavel/Testify" target="_blank">GitHub</a>
+        </div>
+    </nav>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-vial"></i>
-                    <span>Testify</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#installation">Installation</a></li>
-                    <li><a href="#usage">Usage</a></li>
-                    <li><a href="#technical">Technical Details</a></li>
-                </ul>
-            </nav>
+        <span class="badge">IRIS Version >= 2024 Supported</span>
+        <h1>Unit Test Viewer & Report Downloader</h1>
+        <p class="subtitle">A simple and intuitive web application to help developers run InterSystems IRIS unit tests,
+            view detailed results, and export clean HTML reports.</p>
+
+        <!--div class="cta-group">
+            <a href="https://ashokthangavel.github.io/Testify/" class="btn btn-primary">
+                <i class="fas fa-rocket"></i> Launch Live Demo
+            </a-->
+        <a href="https://github.com/AshokThangavel/Testify" class="btn btn-outline">
+            <i class="fab fa-github"></i> View Source
+        </a>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Testify - Unit Test Viewer & Report Downloader</h1>
-            <p>A simple and intuitive web application to help developers run unit tests, view detailed results, and
-                download test reports in HTML format.</p>
-            <div class="version-badge">
-                <i class="fas fa-info-circle"></i> Supported IRIS version: >=2024
-            </div>
-        </div>
-    </section>
+    <div class="container">
+        <img src="https://github.com/user-attachments/assets/859deb6a-cb80-4f3a-916e-e781ae567508"
+            alt="Testify Dashboard" class="preview-img">
 
-    <main class="container">
         <section id="features">
             <h2>Key Features</h2>
-            <ul>
-                <li>Select unit test classes from a dropdown.</li>
-                <li>Run tests directly from the interface.</li>
-                <li>See a detailed breakdown of test results with statuses and execution times.</li>
-                <li>Download the test report as a clean HTML file for further analysis or record keeping.</li>
-            </ul>
-
-            <h2>Features</h2>
-            <div class="feature-grid">
+            <div class="features">
                 <div class="feature-card">
-                    <h3><i class="fas fa-list"></i> Test Class Selection</h3>
-                    <p>Choose from available unit test classes via a dropdown.</p>
+                    <i class="fas fa-list-check"></i>
+                    <h3>Smart Selection</h3>
+                    <p>Easily choose available unit test classes via an optimized dropdown menu.</p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-play-circle"></i> Run Tests</h3>
-                    <p>Execute tests and get immediate feedback.</p>
+                    <i class="fas fa-play"></i>
+                    <h3>Instant Execution</h3>
+                    <p>Run tests directly from the web interface and get immediate feedback on execution.</p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-clipboard-list"></i> Test Results Panel</h3>
-                    <p>Displays passed/failed status, detailed assertions, logs, and timing info.</p>
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Visualize test trends and performance data with the built-in analytics dashboard.</p>
                 </div>
                 <div class="feature-card">
-                    <h3><i class="fas fa-download"></i> Download Report</h3>
-                    <p>Save the test results as an HTML report with one click.</p>
-                </div>
-                <div class="feature-card">
-                    <h3><i class="fas fa-eye"></i> View All Test Results</h3>
-                    <p>Option to view all test results and download.</p>
-                </div>
-                <div class="feature-card">
-                    <h3><i class="fas fa-chart-bar"></i> Analytics Dashboard</h3>
-                    <p>Unit test analytics dashboard.</p>
+                    <i class="fas fa-file-export"></i>
+                    <h3>Clean Reports</h3>
+                    <p>Download professional HTML test reports for your records or stakeholder analysis.</p>
                 </div>
             </div>
         </section>
 
-        <section id="installation">
-            <h2>Installation</h2>
+        <section id="install">
+            <h2>⚙️ Installation</h2>
+
             <h3>Clone the Repository</h3>
-            <div class="code-block">
-                <code>git clone https://github.com/AshokThangavel/Testify.git<br>cd Testify</code>
-            </div>
+            <pre><code>git clone https://github.com/AshokThangavel/Testify.git
+cd Testify</code></pre>
 
-            <h3>Running the Application with Docker</h3>
-            <p>Build and start the app using Docker Compose:</p>
-            <div class="code-block">
-                <code>docker-compose up --build</code>
-            </div>
+            <h3>Running with Docker</h3>
+            <pre><code>docker-compose up --build</code></pre>
 
-            <h3>Stopping the Application</h3>
-            <p>To stop and remove the running containers:</p>
-            <div class="code-block">
-                <code>docker-compose down</code>
-            </div>
-        </section>
-
-        <section id="technical">
-            <h2>Technical Details</h2>
-            <ol>
-                <li>Extend your test case class <code>Testify.UnitTest.TestCases</code> so that, by default, the results
-                    are displayed on the screen.</li>
-            </ol>
-        </section>
-
-        <section id="usage">
-            <h2>Usage</h2>
-            <ol class="steps">
-                <li>Goto http://localhost:52773/csp/user/Testify.Home.cls</li>
-                <li>Select a test class from the dropdown on the left panel.</li>
-                <li>Click the <strong>Run Test</strong> button.</li>
-                <li>The right panel will populate with the test execution results.</li>
-                <li>If desired, click the <strong>Download</strong> link to save the test report as an HTML file.</li>
-                <li>View all the test results by click <strong>View All test results</strong></li>
-            </ol>
+            <p>Once started, access the application at:<br>
+                <code>http://localhost:52773/csp/user/Testify.Home.cls</code>
+            </p>
         </section>
 
         <section>
-            <h2>Example Screenshot</h2>
-            <h3>Test Results & Report Download</h3>
-            <div class="screenshot-container">
-                <img src="https://github.com/user-attachments/assets/859deb6a-cb80-4f3a-916e-e781ae567508"
-                    alt="Testify Test Results Screenshot">
-            </div>
+            <h2>Technical Integration</h2>
+            <p>To ensure results are displayed correctly, extend your test case classes from the Testify base class:</p>
+            <pre><code>Class MyTest.Example extends Testify.UnitTest.TestCases {
+    // Your test methods here
+}</code></pre>
         </section>
-
-        <section>
-            <h2>License</h2>
-            <p>MIT License © 2025 Testify Contributors</p>
-        </section>
-    </main>
+    </div>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <p>Testify - Unit Test Viewer & Report Downloader</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/AshokThangavel/Testify" target="_blank"><i
-                            class="fab fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
+        <p>MIT License © 2025 Testify Contributors | Built for the InterSystems IRIS Community</p>
     </footer>
-    <script src="js/app.js"></script>
+
 </body>
 
 </html>
