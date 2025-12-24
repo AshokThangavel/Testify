@@ -3,7 +3,7 @@
   <Document name="Testify.ZPM">
     <Module>
       <Name>Testify</Name>
-      <Version>1.0.1</Version>
+      <Version>1.0.2</Version>
       <Description>Testify - Unit Test Viewer and Report Downloader</Description>
       <Keywords>Testing, UnitTest, json, yaml</Keywords>
       <Packaging>module</Packaging>
