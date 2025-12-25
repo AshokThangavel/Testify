@@ -202,6 +202,14 @@ footer {
     color: var(--text-muted);
     font-size: 0.9rem;
 }
+nav.xmas {
+    background-image: url("../images/xmas.jpg");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+    /* Optional: ensures visibility if the background is dark */
+    color: white;
+}
+
 
 @media (max-width: 768px) {
     h1 {

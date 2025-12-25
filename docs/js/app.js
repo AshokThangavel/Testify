@@ -1,0 +1,1 @@
+const now = new Date(); const month = now.getMonth(); if (month === 11) {const nav = document.getElementById("nav"); if (nav) { nav.classList.add("xmas");}}
